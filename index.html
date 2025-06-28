@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEENZ</title>
+<link rel="icon" type="image/jpeg" href="https://static.readdy.ai/image/87c6e87df4c248fff0a76c7be32545c8/7b8e77f3d13b1f900b76e5b1921de9c5.jfif">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans KR', sans-serif;
+scroll-behavior: smooth;
+}
+.header {
+transition: background-color 0.3s ease;
+}
+.section {
+min-height: 100vh;
+display: flex;
+align-items: center;
+}
+.gradient-bg {
+background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.language-selector {
+position: relative;
+}
+.language-dropdown {
+display: none;
+position: absolute;
+top: 100%;
+right: 0;
+background-color: white;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+z-index: 50;
+}
+.language-selector:hover .language-dropdown {
+display: block;
+}
+.scroll-indicator {
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+transform: translateY(0);
+}
+40% {
+transform: translateY(-20px);
+}
+60% {
+transform: translateY(-10px);
+}
+}
+.app-store-btn, .play-store-btn {
+transition: transform 0.3s ease;
+}
+.app-store-btn:hover, .play-store-btn:hover {
+transform: translateY(-5px);
+}
+</style>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="header fixed w-full top-0 z-50 bg-white bg-opacity-95 shadow-sm">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a href="#" class="h-8">
+<img src="https://static.readdy.ai/image/87c6e87df4c248fff0a76c7be32545c8/8e180e66a09f2f0784f12ca980db41d5.png" alt="TEENZ" class="h-full">
+</a>
+<div class="language-selector" id="languageSelector">
+<button id="languageButton" class="flex items-center space-x-1 px-4 py-2 rounded-button bg-white border border-gray-200 hover:bg-gray-50">
+<span id="selectedLanguage">한국어</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div id="languageDropdown" class="hidden absolute top-full right-0 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50 mt-1">
+<button data-lang="ko" class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-100 text-gray-800 border-b border-gray-100">
+<span>한국어</span>
+<i class="ri-check-line text-primary"></i>
+</button>
+<button data-lang="vi" class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-100 text-gray-800">
+<span>Tiếng Việt</span>
+<i class="ri-check-line text-primary hidden"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="section relative pt-20" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20fashion%20e-commerce%20app%20illustration%2C%20minimalist%20vector%20art%20style%2C%20soft%20pastel%20colors%2C%20floating%20fashion%20items%20and%20mobile%20devices%2C%20clean%20geometric%20shapes%2C%20digital%20illustration%20style%2C%20flat%20design%20elements%2C%20fashion%20app%20interface%20elements&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="max-w-3xl mx-auto text-center text-white">
+<h1 class="text-4xl md:text-6xl font-bold mb-6">글로벌 패션 전문 이커머스 플랫폼</h1>
+<p class="text-xl md:text-2xl mb-8">전 세계의 트렌디한 패션을 한 곳에서 만나보세요</p>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+<div class="w-10 h-10 flex items-center justify-center text-white">
+<i class="ri-arrow-down-line ri-xl"></i>
+</div>
+</div>
+</section>
+<!-- Main Service Section -->
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 id="mainServiceTitle" class="text-3xl md:text-4xl font-bold mb-4">Main Service</h2>
+<p id="mainServiceDesc" class="text-gray-600 max-w-2xl mx-auto">TEENZ와 함께 글로벌 패션의 세계를 경험해보세요</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded shadow-lg text-center transform transition-transform hover:-translate-y-2">
+<div class="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-primary bg-opacity-10 rounded-full">
+<i class="ri-store-3-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">글로벌 패션 전문 플랫폼</h3>
+<p class="text-gray-600">전 세계 패션 트렌드를 한 곳에서 만나보세요. TEENZ는 글로벌 패션을 선도합니다.</p>
+</div>
+<div class="bg-white p-8 rounded shadow-lg text-center transform transition-transform hover:-translate-y-2">
+<div class="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-primary bg-opacity-10 rounded-full">
+<i class="ri-t-shirt-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">전세계 모든 의류</h3>
+<p class="text-gray-600">아시아, 유럽, 미국 등 전 세계의 다양한 의류 브랜드를 TEENZ에서 쇼핑하세요.</p>
+</div>
+<div class="bg-white p-8 rounded shadow-lg text-center transform transition-transform hover:-translate-y-2">
+<div class="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-primary bg-opacity-10 rounded-full">
+<i class="ri-shopping-bag-3-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">쉽고 빠른 쇼핑</h3>
+<p class="text-gray-600">복잡한 절차 없이 간편하게 해외 상품을 구매하고 배송받을 수 있습니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Fashion Platform Section -->
+<section class="py-20">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">글로벌 패션 전문 플랫폼</h2>
+<p class="text-gray-700 text-lg">국내/해외 모든 상품을 손쉽게 구매할 수 있습니다. TEENZ를 통해 합리적인 가격으로 쇼핑하세요.</p>
+</div>
+<div class="md:w-1/2">
+<img src="https://readdy.ai/api/search-image?query=fashion%20e-commerce%20app%20interface%20illustration%2C%20vector%20art%20style%2C%20shopping%20cart%20and%20clothing%20items%20floating%2C%20modern%20UI%20elements%2C%20soft%20colors%2C%20digital%20illustration%2C%20flat%20design%20style&width=600&height=500&seq=2&orientation=landscape" alt="글로벌 패션 플랫폼" class="rounded-lg shadow-lg w-full object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- Reasonable Price Section -->
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row-reverse items-center">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pl-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">합리적인 가격</h2>
+<p class="text-gray-700 text-lg mb-6">자신의 스타일 그대로 가격은 낮추고 퀄리티는 높이고! 자신의 스타일을 여러 상품과 비교하여 합리적인 쇼핑하세요.</p>
+</div>
+<div class="md:w-1/2">
+<img src="https://readdy.ai/api/search-image?query=price%20comparison%20illustration%20for%20fashion%20app%2C%20vector%20art%20style%2C%20price%20tags%20and%20discount%20symbols%2C%20shopping%20cart%20with%20savings%20icons%2C%20modern%20minimal%20design%2C%20flat%20illustration%20style&width=600&height=500&seq=3&orientation=landscape" alt="합리적인 가격" class="rounded-lg shadow-lg w-full object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- AI Recommendation Section -->
+<section class="py-20">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">AI 추천 서비스</h2>
+<p class="text-gray-700 text-lg mb-6">AI 추천 시스템으로 자신의 스타일을 계속 탐색하세요! AI가 구매자의 소비 성향과 패션 스타일을 탐색하여 최고의 상품을 제시합니다.</p>
+</div>
+<div class="md:w-1/2">
+<img src="https://readdy.ai/api/search-image?query=AI%20fashion%20recommendation%20illustration%2C%20digital%20personal%20stylist%20concept%2C%20mobile%20app%20interface%20with%20AI%20elements%2C%20fashion%20items%20and%20algorithm%20visualization%2C%20modern%20vector%20art%20style%2C%20flat%20design&width=600&height=500&seq=4&orientation=landscape" alt="AI 추천 서비스" class="rounded-lg shadow-lg w-full object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- Download Section -->
+<section class="py-20 gradient-bg">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">TEENZ DOWNLOAD</h2>
+<p class="text-xl mb-8">글로벌 패션 전문 플랫폼, 지금 바로 다운로드 하세요.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 text-center">
+<img src="https://readdy.ai/api/search-image?query=modern%20fashion%20e-commerce%20app%20interface%20mockup%2C%20trendy%20clothing%20items%20display%2C%20clean%20minimalist%20UI%20design%2C%20white%20background%20with%20soft%20shadows%2C%20fashion%20product%20cards%20with%20prices%2C%20search%20bar%20and%20navigation%20elements%2C%20youth-focused%20design%20elements%2C%20professional%20mobile%20app%20showcase&width=400&height=600&seq=5&orientation=portrait" alt="TEENZ 앱" class="max-w-xs mx-auto rounded-xl shadow-2xl">
+</div>
+<div class="md:w-1/2 text-center md:text-left">
+<h3 class="text-2xl font-bold mb-6">언제 어디서나 쇼핑하세요</h3>
+<p class="text-lg mb-8">TEENZ 앱으로 더 편리하게 쇼핑하고 특별한 혜택을 누려보세요.</p>
+<div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+<a href="#" class="app-store-btn flex items-center justify-center bg-black text-white px-6 py-3 rounded-button">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-apple-fill ri-lg"></i>
+</div>
+<div class="text-left">
+<div class="text-xs">다운로드</div>
+<div class="text-sm font-semibold">App Store</div>
+</div>
+</a>
+<a href="#" class="play-store-btn flex items-center justify-center bg-black text-white px-6 py-3 rounded-button">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-google-play-fill ri-lg"></i>
+</div>
+<div class="text-left">
+<div class="text-xs">다운로드</div>
+<div class="text-sm font-semibold">Google Play</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+<div class="container mx-auto px-4">
+<div class="max-w-5xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
+<div class="md:w-1/3">
+<a href="#" class="h-8 mb-6 inline-block">
+<img src="https://static.readdy.ai/image/87c6e87df4c248fff0a76c7be32545c8/8e180e66a09f2f0784f12ca980db41d5.png" alt="TEENZ" class="h-full brightness-0 invert">
+</a>
+<p class="text-gray-400">글로벌 패션 전문 이커머스 플랫폼으로 전 세계의 트렌디한 패션을 만나보세요.</p>
+</div>
+<div class="md:w-1/3">
+<h4 class="text-white text-lg font-semibold mb-4">회사 정보</h4>
+<ul class="space-y-3 text-sm">
+<li>대표: 임강현</li>
+<li class="leading-relaxed">주소: 서울특별시 금천구 가산디지털1로 226, 7층 비09호</li>
+<li>사업자등록번호: 571-86-03537</li>
+</ul>
+</div>
+<div class="md:w-1/3">
+<h4 class="text-white text-lg font-semibold mb-4">Follow Us</h4>
+<a href="https://instagram.com/teenz.kr" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 text-center">
+<p>&copy; 2025 TEENZ. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+<script id="header-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+const header = document.querySelector('.header');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 50) {
+header.classList.add('shadow-md');
+header.classList.remove('bg-opacity-95');
+} else {
+header.classList.remove('shadow-md');
+header.classList.add('bg-opacity-95');
+}
+});
+});
+</script>
+<script id="language-selector">
+document.addEventListener('DOMContentLoaded', function() {
+const languageButton = document.getElementById('languageButton');
+const languageDropdown = document.getElementById('languageDropdown');
+const selectedLanguage = document.getElementById('selectedLanguage');
+const languageOptions = languageDropdown.querySelectorAll('button');
+let isDropdownOpen = false;
+const translations = {
+ko: {
+mainTitle: "글로벌 패션 전문 이커머스 플랫폼",
+mainDesc: "전 세계의 트렌디한 패션을 한 곳에서 만나보세요",
+mainServiceTitle: "Main Service",
+mainServiceDesc: "TEENZ와 함께 글로벌 패션의 세계를 경험해보세요",
+service1Title: "글로벌 패션 전문 플랫폼",
+service1Desc: "전 세계 패션 트렌드를 한 곳에서 만나보세요. TEENZ는 글로벌 패션을 선도합니다.",
+service2Title: "전세계 모든 의류",
+service2Desc: "아시아, 유럽, 미국 등 전 세계의 다양한 의류 브랜드를 TEENZ에서 쇼핑하세요.",
+service3Title: "쉽고 빠른 쇼핑",
+service3Desc: "복잡한 절차 없이 간편하게 해외 상품을 구매하고 배송받을 수 있습니다.",
+globalTitle: "글로벌 패션 전문 플랫폼",
+globalDesc: "국내/해외 모든 상품을 손쉽게 구매할 수 있습니다. TEENZ를 통해 합리적인 가격으로 쇼핑하세요.",
+priceTitle: "합리적인 가격",
+priceDesc: "자신의 스타일 그대로 가격은 낮추고 퀄리티는 높이고! 자신의 스타일을 여러 상품과 비교하여 합리적인 쇼핑하세요.",
+aiTitle: "AI 추천 서비스",
+aiDesc: "AI 추천 시스템으로 자신의 스타일을 계속 탐색하세요! AI가 구매자의 소비 성향과 패션 스타일을 탐색하여 최고의 상품을 제시합니다.",
+downloadTitle: "TEENZ DOWNLOAD",
+downloadDesc: "글로벌 패션 전문 플랫폼, 지금 바로 다운로드 하세요.",
+appTitle: "언제 어디서나 쇼핑하세요",
+appDesc: "TEENZ 앱으로 더 편리하게 쇼핑하고 특별한 혜택을 누려보세요.",
+downloadText: "다운로드",
+footerDesc: "글로벌 패션 전문 이커머스 플랫폼으로 전 세계의 트렌디한 패션을 만나보세요.",
+companyInfo: "회사 정보",
+ceoLabel: "대표",
+addressLabel: "주소",
+businessNumLabel: "사업자등록번호",
+followUs: "Follow Us",
+address: "서울특별시 금천구 가산디지털1로 226, 7층 비09호"
+},
+vi: {
+mainTitle: "Nền tảng thương mại điện tử thời trang toàn cầu",
+mainDesc: "Khám phá xu hướng thời trang toàn cầu tại một nơi",
+mainServiceTitle: "Dịch vụ chính",
+mainServiceDesc: "Trải nghiệm thế giới thời trang toàn cầu cùng TEENZ",
+service1Title: "Nền tảng thời trang toàn cầu",
+service1Desc: "Khám phá xu hướng thời trang toàn cầu tại một nơi. TEENZ dẫn đầu xu hướng thời trang toàn cầu.",
+service2Title: "Quần áo từ khắp nơi trên thế giới",
+service2Desc: "Mua sắm các thương hiệu thời trang đa dạng từ Châu Á, Châu Âu, Mỹ tại TEENZ.",
+service3Title: "Mua sắm dễ dàng và nhanh chóng",
+service3Desc: "Mua và nhận hàng quốc tế một cách dễ dàng không có thủ tục phức tạp.",
+globalTitle: "Nền tảng thời trang toàn cầu",
+globalDesc: "Dễ dàng mua sắm tất cả các sản phẩm trong và ngoài nước. Mua sắm với giá cả hợp lý thông qua TEENZ.",
+priceTitle: "Giá cả hợp lý",
+priceDesc: "Giữ nguyên phong cách của bạn với giá thấp hơn và chất lượng cao hơn! So sánh phong cách của bạn với nhiều sản phẩm để mua sắm hợp lý.",
+aiTitle: "Dịch vụ đề xuất AI",
+aiDesc: "Tiếp tục khám phá phong cách của bạn với hệ thống đề xuất AI! AI phân tích xu hướng tiêu dùng và phong cách thời trang của người mua để đề xuất những sản phẩm tốt nhất.",
+downloadTitle: "TẢI TEENZ",
+downloadDesc: "Nền tảng thời trang toàn cầu chuyên nghiệp, tải ngay bây giờ.",
+appTitle: "Mua sắm mọi lúc mọi nơi",
+appDesc: "Mua sắm thuận tiện hơn và tận hưởng các ưu đãi đặc biệt với ứng dụng TEENZ.",
+downloadText: "Tải về",
+footerDesc: "Khám phá xu hướng thời trang toàn cầu trên nền tảng thương mại điện tử thời trang chuyên nghiệp.",
+companyInfo: "Thông tin công ty",
+companyName: "CÔNG TY TNHH TEENZ VINA",
+ceoLabel: "Giám đốc điều hành",
+ceoName: "Nguyễn Phương Duy",
+addressLabel: "Địa chỉ",
+businessNumLabel: "Mã số doanh nghiệp",
+businessNum: "0801453724",
+followUs: "Theo dõi chúng tôi",
+address: "Phòng B09, Tầng 7, 226 Gasan Digital 1-ro, Quận Geumcheon, Seoul"
+}
+};
+function updateContent(lang) {
+const t = translations[lang];
+document.querySelector('h1').textContent = t.mainTitle;
+document.querySelector('h1 + p').textContent = t.mainDesc;
+document.querySelector('#mainServiceTitle').textContent = t.mainServiceTitle;
+document.querySelector('#mainServiceDesc').textContent = t.mainServiceDesc;
+const services = document.querySelectorAll('.grid-cols-1.md\\:grid-cols-3 > div');
+services[0].querySelector('h3').textContent = t.service1Title;
+services[0].querySelector('p').textContent = t.service1Desc;
+services[1].querySelector('h3').textContent = t.service2Title;
+services[1].querySelector('p').textContent = t.service2Desc;
+services[2].querySelector('h3').textContent = t.service3Title;
+services[2].querySelector('p').textContent = t.service3Desc;
+const sections = document.querySelectorAll('section');
+const globalSection = Array.from(sections).find(section =>
+section.querySelector('h2')?.textContent.includes('글로벌 패션') ||
+section.querySelector('h2')?.textContent.includes('Nền tảng thời trang'));
+if (globalSection) {
+globalSection.querySelector('h2').textContent = t.globalTitle;
+globalSection.querySelector('p').textContent = t.globalDesc;
+}
+const priceSection = Array.from(sections).find(section =>
+section.querySelector('h2')?.textContent.includes('합리적인') ||
+section.querySelector('h2')?.textContent.includes('Giá cả'));
+if (priceSection) {
+priceSection.querySelector('h2').textContent = t.priceTitle;
+priceSection.querySelector('p').textContent = t.priceDesc;
+}
+const aiSection = Array.from(sections).find(section =>
+section.querySelector('h2')?.textContent.includes('AI') ||
+section.querySelector('h2')?.textContent.includes('đề xuất'));
+if (aiSection) {
+aiSection.querySelector('h2').textContent = t.aiTitle;
+aiSection.querySelector('p').textContent = t.aiDesc;
+}
+const downloadSection = Array.from(sections).find(section =>
+section.querySelector('h2')?.textContent.includes('DOWNLOAD') ||
+section.querySelector('h2')?.textContent.includes('TẢI'));
+if (downloadSection) {
+downloadSection.querySelector('h2').textContent = t.downloadTitle;
+downloadSection.querySelector('h2 + p').textContent = t.downloadDesc;
+downloadSection.querySelector('h3').textContent = t.appTitle;
+downloadSection.querySelector('h3 + p').textContent = t.appDesc;
+downloadSection.querySelectorAll('.text-xs').forEach(el => {
+el.textContent = t.downloadText;
+});
+}
+const footer = document.querySelector('footer');
+footer.querySelector('p').textContent = t.footerDesc;
+footer.querySelector('h4').textContent = t.companyInfo;
+const companyInfo = footer.querySelectorAll('ul li');
+if (lang === 'vi') {
+companyInfo[0].textContent = t.companyName;
+companyInfo[1].textContent = `${t.ceoLabel}: ${t.ceoName}`;
+companyInfo[2].textContent = `${t.businessNumLabel}: ${t.businessNum}`;
+} else {
+companyInfo[0].textContent = `${t.ceoLabel}: 임강현`;
+companyInfo[1].textContent = `${t.addressLabel}: ${t.address}`;
+companyInfo[2].textContent = `${t.businessNumLabel}: 571-86-03537`;
+}
+footer.querySelectorAll('h4')[1].textContent = t.followUs;
+}
+function toggleDropdown() {
+isDropdownOpen = !isDropdownOpen;
+languageDropdown.classList.toggle('hidden', !isDropdownOpen);
+}
+function closeDropdown() {
+isDropdownOpen = false;
+languageDropdown.classList.add('hidden');
+}
+languageButton.addEventListener('click', function(e) {
+e.stopPropagation();
+toggleDropdown();
+});
+document.addEventListener('click', function(e) {
+if (!document.getElementById('languageSelector').contains(e.target)) {
+closeDropdown();
+}
+});
+languageOptions.forEach(option => {
+option.addEventListener('click', function() {
+const lang = this.getAttribute('data-lang');
+const langText = this.querySelector('span').textContent;
+languageOptions.forEach(opt => {
+opt.querySelector('.ri-check-line').classList.add('hidden');
+});
+this.querySelector('.ri-check-line').classList.remove('hidden');
+selectedLanguage.textContent = langText;
+document.documentElement.lang = lang;
+updateContent(lang);
+closeDropdown();
+});
+});
+});
+</script>
+</body>
+</html>
